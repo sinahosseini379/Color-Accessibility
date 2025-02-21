@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Adjustment Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .color-box {
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+            margin-left: 10px;
+            border: 1px solid #000;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Adjustment and Simulation Tool</h1>
+    <form method="POST">
+        <label for="hex_code">Enter Hex Color Code:</label>
+        <input type="text" id="hex_code" name="hex_code" placeholder="e.g., A90C0C" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        <ul>
+            {% for label, color in results %}
+                <li>
+                    {{ label }}: #{{ color }}
+                    <div class="color-box" style="background-color: #{{ color }}"></div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
